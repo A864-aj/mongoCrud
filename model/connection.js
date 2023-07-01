@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const db = 'mongodb+srv://ankit:ankit@cluster0.kw0bl3j.mongodb.net/'
+const db = 'mongodb://127.0.0.1:27017/Blackcoffer'
 
 mongoose.connect(db , {
 
 }).then(()=>{
     console.log('connected to db successfully')
 }).catch((err)=>console.log(err));
+

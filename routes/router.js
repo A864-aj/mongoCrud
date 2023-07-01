@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../model/user')
+const {User} = require('../model/user')
 
 router.get('/',(req,res)=>{
     res.send('hello from server')
@@ -8,7 +8,7 @@ router.get('/',(req,res)=>{
 
 router.post('/register',(req,res)=>{
      const { name , password} = req.body;
-     console.log(name , password )
+     console.log(req.body )
      
      const user = new User({
          name,
@@ -43,8 +43,17 @@ router.put('/users/:id',async(req,res)=>{
     //findByIdAndUpdate
 
 
-    const user = await User.updateOne({
-    })
+    const user = await User.updateOne({_id:id}, {
+        $set: 
+          {
+            title: "Post Title 5",
+            body: "Body of post.",
+            category: "Event",
+            likes: 5,
+            tags: ["news", "events"],
+            date: Date()
+          }
+      }, )
     console.log(user)
     res.send(user);
 })
